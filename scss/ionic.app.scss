@@ -18,6 +18,13 @@ $dark:                            #444 !default;
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
+// Item thumbnail height
+$item-thumbnail-height: 55px;
+
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
+.item-thumbnail-left > img {
+  object-fit: cover;
+  border-radius: 1px;
+}
