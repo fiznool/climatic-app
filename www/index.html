@@ -16,6 +16,7 @@
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
+    <script src="js/posts/feed.controller.js"></script>
   </head>
   <body ng-app="climatic">
 
@@ -24,6 +25,12 @@
         <h1 class="title">Climatic</h1>
       </ion-header-bar>
       <ion-content>
+        <ul class="list" ng-controller="FeedController as $ctrl">
+          <li class="item" ng-repeat="post in $ctrl.posts">
+            <h2>{{:: post.title }}</h2>
+            <p>{{:: post.description }}</p>
+          </li>
+        </ul>
       </ion-content>
     </ion-pane>
   </body>
