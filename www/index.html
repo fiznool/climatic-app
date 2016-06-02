@@ -37,6 +37,10 @@
             <p>{{:: post.description }}</p>
           </li>
         </ul>
+        <ion-infinite-scroll
+          ng-if="$ctrl.hasMorePosts"
+          on-infinite="$ctrl.loadNext()"
+          immediate-check="false"></ion-infinite-scroll>
       </ion-content>
     </ion-pane>
   </body>
