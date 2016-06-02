@@ -5,7 +5,7 @@
     .module('climatic')
     .controller('FeedController', FeedController);
 
-  function FeedController(Posts, $scope, $q, $ionicLoading) {
+  function FeedController(Posts, $scope, $q, $ionicLoading, $timeout) {
     var $ctrl = this;
     $ctrl.title = 'FeedController';
     $ctrl.loadNext = loadNext;
@@ -15,16 +15,22 @@
     ////////////////
 
     function activate() {
-      $ionicLoading.show();
-      Posts
-        .getPosts()
-        .then(_onLoadSuccess)
-        .finally(function() {
-          // Posts have either loaded or failed to load.
-          $ionicLoading.hide();
-        });
+      $q.resolve()
+        .then($ionicLoading.show)
+        .then(loadFirst)
+        .finally($ionicLoading.hide);
     }
 
+    function loadFirst() {
+      var promises = [
+        Posts.getPosts(),
+        $timeout(500)
+      ];
+      return $q.all(promises)
+        .then(function(response) {
+          _onLoadSuccess(response[0]);
+        });
+    }
 
     function loadNext() {
       Posts.getNextPosts()
