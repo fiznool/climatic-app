@@ -5,7 +5,7 @@
     .module('climatic')
     .factory('Posts', Posts);
 
-  function Posts() {
+  function Posts($q) {
     // To begin with, let's just set some static data.
     // Later, we'll fetch this dynamically.
     var posts = [{
@@ -42,8 +42,7 @@
     ////////////////
 
     function getPosts() {
-      // TODO: Return posts here
-      // Hint: use $q
+      return $q.resolve({data: posts});
     }
   }
 })();
