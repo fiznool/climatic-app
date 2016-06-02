@@ -15,7 +15,7 @@
 
     function activate() {
       Posts.getPosts().then(function(response) {
-        $ctrl.posts = response.data;
+        $ctrl.posts = response.posts;
       });
     }
   }
