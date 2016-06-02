@@ -5,7 +5,7 @@
     .module('climatic')
     .controller('FeedController', FeedController);
 
-  function FeedController(Posts, $scope) {
+  function FeedController(Posts, $scope, $q) {
     var $ctrl = this;
     $ctrl.title = 'FeedController';
     $ctrl.loadNext = loadNext;
@@ -15,7 +15,12 @@
     ////////////////
 
     function activate() {
-      Posts.getPosts().then(_onLoadSuccess);
+      Posts
+        .getPosts()
+        .then(_onLoadSuccess)
+        .finally(function() {
+          // Posts have either loaded or failed to load.
+        });
     }
 
 
@@ -30,6 +35,7 @@
     function _onLoadSuccess(response) {
       $ctrl.posts = response.posts;
       $ctrl.hasMorePosts = response.hasMore;
+      return $q.resolve();
     }
   }
 })();
