@@ -42,7 +42,10 @@
     }
 
     function showAddPostModal() {
-      AddPostModal.reveal();
+      AddPostModal
+        .reveal()
+        .then(_onModalClosed)
+        .catch(_onModalDismissed);
     }
 
     function _onLoadSuccess(response) {
