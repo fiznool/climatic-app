@@ -15,7 +15,9 @@
       })
       .state('post', {
         url: '/posts/:id',
-        // TODO link with template and controller
+        templateUrl: 'tmpl/posts/post.html',
+        controller: 'PostController',
+        controllerAs: '$ctrl'
       });
 
     $urlRouterProvider.otherwise('posts');
