@@ -42,6 +42,7 @@
         modal.show();
 
         function save() {
+          console.log($ctrl.formData);
           _close().then(function() {
             resolve();
           });

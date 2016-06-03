@@ -5,15 +5,17 @@
     <button class="button button-icon button-icon-small icon ion-checkmark-round" ng-click="$ctrl.save()"></button>
   </ion-header-bar>
   <ion-content>
-    <div class="list">
-      <label class="item item-input item-floating-label">
-        <span class="input-label">Title</span>
-        <input type="text" placeholder="Title">
-      </label>
-      <label class="item item-input item-floating-label">
-        <span class="input-label">Description</span>
-        <textarea placeholder="Description"></textarea>
-      </label>
-    </div>
+    <form name="$ctrl.form" ng-submit="$ctrl.save()" novalidate="novalidate">
+      <div class="list">
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Title</span>
+          <input type="text" placeholder="Title" ng-model="$ctrl.formData.title">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Description</span>
+          <textarea placeholder="Description" ng-model="$ctrl.formData.description" msd-elastic="\n"></textarea>
+        </label>
+      </div>
+    </form>
   </ion-content>
 </ion-modal-view>
