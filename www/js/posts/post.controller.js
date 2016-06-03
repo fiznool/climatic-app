@@ -14,7 +14,6 @@
     ////////////////
 
     function activate() {
-      // TODO get post by ID, set to `$ctrl`
       $ctrl.post = Posts.getPostById($stateParams.id);
     }
   }

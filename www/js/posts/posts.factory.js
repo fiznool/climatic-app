@@ -42,7 +42,7 @@
       // Find a post in the posts array, by ID.
       var post = null;
 
-      // TODO return the post in the posts array
+      // Return the post in the posts array
       // which matches the `id` argument.
       // Each post in the posts array is an object
       // containing an `objectId` parameter. E.g.:
@@ -52,6 +52,14 @@
       //   description: "The outlook is rain.",
       //   ...
       // }
+
+      var i, len = posts.length;
+      for(i = 0; i < len; i++) {
+        if(posts[i].objectId === id) {
+          post = posts[i];
+          break;
+        }
+      }
 
       return post;
     }
