@@ -21,28 +21,15 @@
     <script src="js/app.js"></script>
     <script src="js/config/loading-config.constant.js"></script>
     <script src="js/config/parse.config.js"></script>
+    <script src="js/config/router.config.js"></script>
     <script src="js/posts/feed.controller.js"></script>
     <script src="js/posts/posts.factory.js"></script>
   </head>
-  <body ng-app="climatic" ng-cloak>
-
-    <ion-pane>
-      <ion-header-bar class="bar-positive">
-        <h1 class="title">Climatic</h1>
-      </ion-header-bar>
-      <ion-content ng-controller="FeedController as $ctrl">
-        <ul class="list">
-          <li class="item item-thumbnail-left" ng-repeat="post in $ctrl.posts">
-            <img ng-src="{{:: post.picture.url }}">
-            <h2>{{:: post.title }}</h2>
-            <p>{{:: post.description }}</p>
-          </li>
-        </ul>
-        <ion-infinite-scroll
-          ng-if="$ctrl.hasMorePosts"
-          on-infinite="$ctrl.loadNext()"
-          immediate-check="false"></ion-infinite-scroll>
-      </ion-content>
-    </ion-pane>
+  <body ng-app="climatic">
+    <ion-nav-bar class="bar-positive">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-nav-view></ion-nav-view>
   </body>
 </html>
