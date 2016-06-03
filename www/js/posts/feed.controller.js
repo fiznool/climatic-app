@@ -5,7 +5,7 @@
     .module('climatic')
     .controller('FeedController', FeedController);
 
-  function FeedController(Posts, $scope, $q, $ionicLoading, $timeout) {
+  function FeedController(Posts, $scope, $q, $ionicLoading, $timeout, AddPostModal) {
     var $ctrl = this;
     $ctrl.title = 'FeedController';
     $ctrl.loadNext = loadNext;
@@ -42,7 +42,7 @@
     }
 
     function showAddPostModal() {
-      // TODO reveal modal
+      AddPostModal.reveal();
     }
 
     function _onLoadSuccess(response) {
