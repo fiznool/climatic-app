@@ -3335,7 +3335,7 @@ body,
   overflow: hidden;
   margin: 0;
   padding: 0;
-  color: #000;
+  color: #333;
   word-wrap: break-word;
   font-size: 14px;
   font-family: -apple-system;
@@ -3593,7 +3593,7 @@ cite {
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-  color: #000;
+  color: #333;
   font-weight: 500;
   font-family: "-apple-system", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
   line-height: 1.2; }
@@ -7741,7 +7741,7 @@ input[type="color"] {
   padding-top: 2px;
   padding-left: 0;
   height: 34px;
-  color: #111;
+  color: #333;
   vertical-align: middle;
   font-size: 14px;
   line-height: 16px; }
@@ -9832,3 +9832,10 @@ p.post-user {
 
 .button.button-icon-small .icon:before, .button.button-icon-small.icon:before {
   font-size: 24px; }
+
+.item-input {
+  transition: border linear 0.2s; }
+
+textarea {
+  padding: 10px 0;
+  resize: none !important; }
