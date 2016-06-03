@@ -47,3 +47,10 @@ p.post-user {
 .post-description {
   white-space: pre-wrap;
 }
+
+.button.button-icon-small {
+  .icon:before,
+  &.icon:before {
+    font-size: $button-icon-size;
+  }
+}

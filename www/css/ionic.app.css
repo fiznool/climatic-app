@@ -9829,3 +9829,6 @@ p.post-user {
 
 .post-description {
   white-space: pre-wrap; }
+
+.button.button-icon-small .icon:before, .button.button-icon-small.icon:before {
+  font-size: 24px; }

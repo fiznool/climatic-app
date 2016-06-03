@@ -9,6 +9,7 @@
     var $ctrl = this;
     $ctrl.title = 'FeedController';
     $ctrl.loadNext = loadNext;
+    $ctrl.showAddPostModal = showAddPostModal;
 
     activate();
 
@@ -40,10 +41,22 @@
         });
     }
 
+    function showAddPostModal() {
+      // TODO reveal modal
+    }
+
     function _onLoadSuccess(response) {
       $ctrl.posts = response.posts;
       $ctrl.hasMorePosts = response.hasMore;
       return $q.resolve();
+    }
+
+    function _onModalClosed() {
+      console.log('Modal was closed!');
+    }
+
+    function _onModalDismissed(reason) {
+      console.log('Modal was dismissed! Reason: ' + reason);
     }
   }
 })();
