@@ -19,7 +19,8 @@
 
     var service = {
       getPosts: getPosts,
-      getNextPosts: getNextPosts
+      getNextPosts: getNextPosts,
+      getPostById: getPostById
     };
     return service;
 
@@ -35,6 +36,24 @@
       // Increment the page counter, and fetch posts.
       page++;
       return _fetchPosts();
+    }
+
+    function getPostById(id) {
+      // Find a post in the posts array, by ID.
+      var post = null;
+
+      // TODO return the post in the posts array
+      // which matches the `id` argument.
+      // Each post in the posts array is an object
+      // containing an `objectId` parameter. E.g.:
+      // {
+      //   objectId: "9ppDMcjGos",
+      //   title: "Storms a-coming!",
+      //   description: "The outlook is rain.",
+      //   ...
+      // }
+
+      return post;
     }
 
     function _fetchPosts(overwrite) {

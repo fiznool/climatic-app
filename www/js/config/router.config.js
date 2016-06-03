@@ -12,6 +12,10 @@
         templateUrl: 'tmpl/posts/feed.html',
         controller: 'FeedController',
         controllerAs: '$ctrl'
+      })
+      .state('post', {
+        url: '/posts/:id',
+        // TODO link with template and controller
       });
 
     $urlRouterProvider.otherwise('posts');

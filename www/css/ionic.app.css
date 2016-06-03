@@ -9821,3 +9821,11 @@ a.button {
 
 .loading-text {
   margin: 15px 0 0 0; }
+
+p.post-user {
+  color: #68AA63; }
+  p.post-user .icon {
+    padding-right: 5px; }
+
+.post-description {
+  white-space: pre-wrap; }
