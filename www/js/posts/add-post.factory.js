@@ -6,6 +6,7 @@
     .factory('AddPostModal', AddPostModal);
 
   function AddPostModal(
+    Posts,
     $q,
     $rootScope,
     $window,
@@ -63,7 +64,7 @@
             $q.resolve()
               .then($ionicLoading.show)
               .then(function() {
-                // TODO save form via Posts factory
+                return Posts.savePost($ctrl.formData);
               })
               .then(function() {
                 _close().then(resolve);
@@ -128,7 +129,13 @@
         }
 
         function _onSaveError(err) {
-          // TODO handle save error
+          console.log('Error saving post:');
+          console.dir(err);
+
+          $ionicPopup.alert({
+            title: 'Error',
+            template: 'There was an error when saving your post. Please try again.'
+          });
         }
       });
     }
