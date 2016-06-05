@@ -16,10 +16,16 @@
           <div class="item-input-error" ng-message="minlength">Title should be at least 2 characters.</div>
           <div class="item-input-error" ng-message="maxlength">Title should be 30 characters or less.</div>
         </div>
-        <label class="item item-input item-floating-label">
+        <label class="item item-input item-floating-label" ng-class="{ 'item-input-has-error': $ctrl.form.description.$invalid && ($ctrl.form.description.$touched || $ctrl.form.$submitted) }">
           <span class="input-label">Description</span>
-          <textarea placeholder="Description" ng-model="$ctrl.formData.description" msd-elastic="\n"></textarea>
+          <textarea placeholder="Description" ng-model="$ctrl.formData.description" name="description" msd-elastic="\n" required ng-minlength="10" ng-maxlength="500"></textarea>
         </label>
+        <div class="item-input-errors" ng-messages="$ctrl.form.description.$error" ng-show="$ctrl.form.description.$invalid && ($ctrl.form.description.$touched || $ctrl.form.$submitted)">
+          <div class="item-input-error" ng-message="required">Description is required.</div>
+          <div class="item-input-error" ng-message="minlength">Description should be at least 10 characters.</div>
+          <div class="item-input-error" ng-message="maxlength">Description should be 500 characters or less.</div>
+        </div>
+
       </div>
       <div class="padding">
         <button type="button" class="button button-outline button-positive" ng-click="$ctrl.addPicture()" ng-if="!$ctrl.formData.picture"><i class="icon ion-camera"></i>&nbsp;&nbsp;Take Picture</button>
