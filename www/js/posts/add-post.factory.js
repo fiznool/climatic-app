@@ -5,7 +5,7 @@
     .module('climatic')
     .factory('AddPostModal', AddPostModal);
 
-  function AddPostModal($q, $rootScope, $ionicModal) {
+  function AddPostModal($q, $rootScope, $window, $ionicModal, $ionicPlatform, $cordovaCamera) {
 
     var service = {
       reveal: reveal
@@ -34,9 +34,17 @@
       return $q(function(resolve, reject) {
         var $ctrl = modal.scope.$ctrl;
 
+        // Setup the modal formData.
+        $ctrl.formData = {
+          title: null,
+          description: null,
+          picture: null
+        };
+
         // Set up the modal scope functions.
         $ctrl.save = save;
         $ctrl.cancel = cancel;
+        $ctrl.addPicture = addPicture;
 
         // Show the modal.
         modal.show();
@@ -56,6 +64,48 @@
 
         function _close() {
           return modal.remove();
+        }
+
+        function addPicture() {
+          $ionicPlatform.ready(function() {
+            var Camera = $window.Camera;
+            if(!Camera) {
+              return _onCameraError({ msg: 'No Camera object!'});
+            }
+            var options = {
+              quality: 80,
+              destinationType: Camera.DestinationType.DATA_URL,
+              sourceType: Camera.PictureSourceType.CAMERA,
+              allowEdit: true,
+              encodingType: Camera.EncodingType.JPEG,
+              targetWidth: 960,
+              saveToPhotoAlbum: false,
+              correctOrientation: true
+            };
+
+            $cordovaCamera
+              .getPicture(options)
+              .then(function(imageData) {
+                $ctrl.formData.picture = imageData;
+
+              }, function(err) {
+                if(err === 'Camera cancelled.') {
+                  // The user closed the camera.
+                  return;
+                }
+
+                // Otherwise, there was a genuine error!
+                _onCameraError(err);
+              });
+          });
+        }
+
+        function _onCameraError(err) {
+          console.log('Error getting picture:');
+          console.dir(err);
+
+          // TODO show popup
+
         }
       });
     }

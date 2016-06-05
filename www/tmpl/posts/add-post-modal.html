@@ -16,6 +16,14 @@
           <textarea placeholder="Description" ng-model="$ctrl.formData.description" msd-elastic="\n"></textarea>
         </label>
       </div>
+      <div class="padding">
+        <!-- TODO -->
+        <!-- Button should launch camera when tapped -->
+        <!-- Button should be displayed when there is no image data -->
+        <!-- Image should be displayed when there is some image data -->
+        <button type="button" class="button button-outline button-positive"><i class="icon ion-camera"></i>&nbsp;&nbsp;Take Picture</button>
+        <img class="full-image" ng-src="data:image/jpeg;base64,{{$ctrl.formData.picture}}">
+      </div>
     </form>
   </ion-content>
 </ion-modal-view>
