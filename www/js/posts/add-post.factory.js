@@ -5,7 +5,15 @@
     .module('climatic')
     .factory('AddPostModal', AddPostModal);
 
-  function AddPostModal($q, $rootScope, $window, $ionicModal, $ionicPlatform, $ionicPopup, $cordovaCamera) {
+  function AddPostModal(
+    $q,
+    $rootScope,
+    $window,
+    $ionicModal,
+    $ionicPlatform,
+    $ionicPopup,
+    $ionicLoading,
+    $cordovaCamera) {
 
     var service = {
       reveal: reveal
@@ -52,10 +60,16 @@
         function save() {
           $ctrl.form.$setSubmitted();
           if($ctrl.form.$valid) {
-            console.log($ctrl.formData);
-            _close().then(function() {
-              resolve();
-            });
+            $q.resolve()
+              .then($ionicLoading.show)
+              .then(function() {
+                // TODO save form via Posts factory
+              })
+              .then(function() {
+                _close().then(resolve);
+              }, function() {
+                $ionicLoading.hide().then(_onSaveError);
+              });
           }
         }
 
@@ -111,6 +125,10 @@
             title: 'Error',
             template: 'There was an error when taking your picture. Please try again.'
           });
+        }
+
+        function _onSaveError(err) {
+          // TODO handle save error
         }
       });
     }

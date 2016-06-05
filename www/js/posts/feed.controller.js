@@ -56,6 +56,7 @@
 
     function _onModalClosed() {
       console.log('Modal was closed!');
+      loadFirst().then($ionicLoading.hide());
     }
 
     function _onModalDismissed(reason) {

@@ -20,7 +20,8 @@
     var service = {
       getPosts: getPosts,
       getNextPosts: getNextPosts,
-      getPostById: getPostById
+      getPostById: getPostById,
+      savePost: savePost
     };
     return service;
 
@@ -62,6 +63,28 @@
       }
 
       return post;
+    }
+
+    function savePost(p) {
+      return $q(function(resolve, reject) {
+        // Take a copy of the data so the binding isn't mucked with.
+        var post = {
+          title: p.title,
+          description: p.description,
+          picture: new Parse.File('picture.jpg', {
+            base64: p.picture
+          })
+        };
+
+        new Post().save(post, {
+          success: function(p) {
+            resolve(p.toJSON());
+          },
+          error: function(p, err) {
+            reject(err);
+          }
+        });
+      });
     }
 
     function _fetchPosts(overwrite) {
