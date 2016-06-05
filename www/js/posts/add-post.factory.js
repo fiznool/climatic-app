@@ -5,7 +5,7 @@
     .module('climatic')
     .factory('AddPostModal', AddPostModal);
 
-  function AddPostModal($q, $rootScope, $window, $ionicModal, $ionicPlatform, $cordovaCamera) {
+  function AddPostModal($q, $rootScope, $window, $ionicModal, $ionicPlatform, $ionicPopup, $cordovaCamera) {
 
     var service = {
       reveal: reveal
@@ -104,8 +104,10 @@
           console.log('Error getting picture:');
           console.dir(err);
 
-          // TODO show popup
-
+          $ionicPopup.alert({
+            title: 'Error',
+            template: 'There was an error when taking your picture. Please try again.'
+          });
         }
       });
     }
