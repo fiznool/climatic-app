@@ -50,10 +50,13 @@
         modal.show();
 
         function save() {
-          console.log($ctrl.formData);
-          _close().then(function() {
-            resolve();
-          });
+          $ctrl.form.$setSubmitted();
+          if($ctrl.form.$valid) {
+            console.log($ctrl.formData);
+            _close().then(function() {
+              resolve();
+            });
+          }
         }
 
         function cancel() {

@@ -9839,3 +9839,23 @@ p.post-user {
 textarea {
   padding: 10px 0;
   resize: none !important; }
+
+.item-input-has-error {
+  border-bottom: 1px solid #ef473a; }
+
+.item-input-errors {
+  padding: 10px; }
+
+.item-input-errors.ng-hide-remove {
+  transition: opacity linear 0.2s;
+  opacity: 0; }
+
+.item-input-errors.ng-hide-remove-active {
+  opacity: 1; }
+
+.padding + .item-input-errors {
+  padding-top: 0; }
+
+.item-input-error {
+  padding: 0 5px;
+  color: #ef473a; }
