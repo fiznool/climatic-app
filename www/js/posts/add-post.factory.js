@@ -92,11 +92,11 @@
         }
 
         function _getUsername() {
-          // TODO return username from localStorage
+          return $window.localStorage.getItem('username');
         }
 
         function _setUsername(username) {
-          // TODO set username in localStorage
+          $window.localStorage.setItem('username', username);
         }
 
         function _close() {
