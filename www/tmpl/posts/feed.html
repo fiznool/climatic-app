@@ -3,6 +3,7 @@
     <button class="button button-icon button-icon-small icon ion-plus-round" ng-click="$ctrl.showAddPostModal()"></button>
   </ion-nav-buttons>
   <ion-content>
+    <!-- TODO Add pull-to-refresh directive -->
     <ul class="list">
       <li ng-repeat="item in $ctrl.posts">
         <a ui-sref="post({id:item.objectId})" class="item item-thumbnail-left item-icon-right">

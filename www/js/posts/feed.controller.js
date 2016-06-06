@@ -9,6 +9,7 @@
     var $ctrl = this;
     $ctrl.title = 'FeedController';
     $ctrl.loadNext = loadNext;
+    $ctrl.refreshFeeds = refreshFeeds;
     $ctrl.showAddPostModal = showAddPostModal;
 
     activate();
@@ -30,6 +31,15 @@
       return $q.all(promises)
         .then(function(response) {
           _onLoadSuccess(response[0]);
+        });
+    }
+
+    function refreshFeeds() {
+      // Fetch the data from the Posts factory.
+      Posts.getPosts()
+        .then(_onLoadSuccess)
+        .then(function() {
+          $scope.$broadcast('scroll.refreshComplete');
         });
     }
 
