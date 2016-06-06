@@ -69,6 +69,7 @@
       return $q(function(resolve, reject) {
         // Take a copy of the data so the binding isn't mucked with.
         var post = {
+          username: p.username,
           title: p.title,
           description: p.description,
           picture: new Parse.File('picture.jpg', {

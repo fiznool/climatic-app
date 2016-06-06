@@ -9859,3 +9859,11 @@ textarea {
 .item-input-error {
   padding: 0 5px;
   color: #ef473a; }
+
+.subdued {
+  color: #666; }
+
+.add-post-username-display {
+  text-align: right;
+  color: #999;
+  padding: 10px; }

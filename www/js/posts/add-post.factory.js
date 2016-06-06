@@ -43,8 +43,14 @@
       return $q(function(resolve, reject) {
         var $ctrl = modal.scope.$ctrl;
 
+        var username = _getUsername() || null;
+        if(username) {
+          $ctrl.hasUsername = true;
+        }
+
         // Setup the modal formData.
         $ctrl.formData = {
+          username: username,
           title: null,
           description: null,
           picture: null
@@ -60,7 +66,12 @@
 
         function save() {
           $ctrl.form.$setSubmitted();
+
           if($ctrl.form.$valid) {
+            if(!$ctrl.hasUsername) {
+              _setUsername($ctrl.formData.username);
+            }
+
             $q.resolve()
               .then($ionicLoading.show)
               .then(function() {
@@ -78,6 +89,14 @@
           _close().then(function() {
             reject('cancelled');
           });
+        }
+
+        function _getUsername() {
+          // TODO return username from localStorage
+        }
+
+        function _setUsername(username) {
+          // TODO set username in localStorage
         }
 
         function _close() {

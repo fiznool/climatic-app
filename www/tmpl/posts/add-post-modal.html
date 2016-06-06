@@ -6,6 +6,20 @@
   </ion-header-bar>
   <ion-content>
     <form name="$ctrl.form" ng-submit="$ctrl.save()" novalidate="novalidate">
+      <!-- TODO only display if username not in localStorage -->
+      <div>
+        <div class="padding card subdued">
+          <p>It looks like this is your first post. Welcome!</p>
+          <p>Please enter a username - you only need to do this once, it will be remembered for future posts.</p>
+        </div>
+        <label class="item item-input item-floating-label" ng-class="{'item-input-has-error': $ctrl.form.username.$invalid && ($ctrl.form.username.$touched || $ctrl.form.$submitted) }">
+          <span class="input-label">Username</span>
+          <input type="text" name="username" placeholder="Username" ng-model="$ctrl.formData.username" required ng-minlength="2" ng-maxlength="50">
+        </label>
+        <!-- TODO complete error messages -->
+        <div class="item-input-errors">
+        </div>
+      </div>
       <div class="list">
         <label class="item item-input item-floating-label" ng-class="{ 'item-input-has-error': $ctrl.form.title.$invalid && ($ctrl.form.title.$touched || $ctrl.form.$submitted) }">
           <span class="input-label">Title</span>
@@ -34,6 +48,8 @@
       <div class="item-input-errors" ng-messages="$ctrl.form.picture.$error" ng-show="$ctrl.form.picture.$invalid && ($ctrl.form.picture.$touched || $ctrl.form.$submitted)">
         <div class="item-input-error" ng-message="required">Picture is required.</div>
       </div>
+      <!-- TODO only display if username fetched from localStorage -->
+      <p class="add-post-username-display">Posting as {{$ctrl.formData.username}}</p>
     </form>
   </ion-content>
 </ion-modal-view>
