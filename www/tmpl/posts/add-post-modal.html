@@ -6,8 +6,7 @@
   </ion-header-bar>
   <ion-content>
     <form name="$ctrl.form" ng-submit="$ctrl.save()" novalidate="novalidate">
-      <!-- TODO only display if username not in localStorage -->
-      <div>
+      <div ng-if="!$ctrl.hasUsername">
         <div class="padding card subdued">
           <p>It looks like this is your first post. Welcome!</p>
           <p>Please enter a username - you only need to do this once, it will be remembered for future posts.</p>
@@ -48,8 +47,7 @@
       <div class="item-input-errors" ng-messages="$ctrl.form.picture.$error" ng-show="$ctrl.form.picture.$invalid && ($ctrl.form.picture.$touched || $ctrl.form.$submitted)">
         <div class="item-input-error" ng-message="required">Picture is required.</div>
       </div>
-      <!-- TODO only display if username fetched from localStorage -->
-      <p class="add-post-username-display">Posting as {{$ctrl.formData.username}}</p>
+      <p class="add-post-username-display" ng-if="$ctrl.hasUsername">Posting as {{$ctrl.formData.username}}</p>
     </form>
   </ion-content>
 </ion-modal-view>
