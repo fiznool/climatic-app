@@ -29,3 +29,6 @@ node_modules
 # Cordova platform code
 platforms/
 plugins/
+
+# Ionic Platform config
+.io-config.json
